@@ -11,6 +11,16 @@
     .card-comercio { border: 2px solid #1e293b; border-radius: 12px; }
     .badge-aberto { background-color: #047857; color: #ffffff; font-size: 0.95rem; }
     .badge-fechado { background-color: #475569; color: #ffffff; font-size: 0.95rem; }
+    body.alto-contraste, body.alto-contraste .card, body.alto-contraste header {
+  background-color: #000000 !important;
+  color: #FFFF00 !important;
+  border-color: #FFFF00 !important;
+}
+body.alto-contraste .btn-success {
+  background-color: #FFFF00 !important;
+  color: #000000 !important;
+  font-weight: bold;
+}
   </style>
 </head>
 <body>
@@ -19,6 +29,9 @@
     <section id="tela-vitrine">
       <header class="d-flex justify-content-between align-items-center mb-3 gap-2">
         <h1 class="h4 fw-bold m-0">Guia Bairro Conectado</h1>
+        <button id="btn-contraste" type="button" class="btn btn-outline-light btn-sm mt-2" aria-pressed="false" onclick="document.body.classList.toggle('alto-contraste'); this.setAttribute('aria-pressed', document.body.classList.contains('alto-contraste'));">
+  🌓 Alto Contraste
+</button>
         <button type="button" class="btn btn-success btn-touch" onclick="mostrarTela('tela-cadastro')">
           + Cadastrar negócio
         </button>

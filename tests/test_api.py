@@ -44,4 +44,11 @@ def test_bloqueio_whatsapp_invalido(client):
             "horario_fechamento": "18:00",
         },
     )
+
     assert resp.status_code == 400
+    
+def test_cabecalhos_seguranca(client):
+    resp = client.get("/api/categorias")
+    assert resp.status_code == 200
+    assert resp.headers.get("X-Content-Type-Options") == "nosniff"
+    assert resp.headers.get("X-Frame-Options") == "DENY"

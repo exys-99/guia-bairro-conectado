@@ -7,6 +7,12 @@ from app.models import Categoria, Estabelecimento, ItemCatalogo
 
 bp = Blueprint("main", __name__)
 
+@bp.after_request
+def aplicar_cabecalhos_seguranca(response):
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "DENY"
+    return response
+
 
 def limpar_texto(valor: str) -> str:
     return re.sub(r"<[^>]*?>", "", (valor or "").strip())
